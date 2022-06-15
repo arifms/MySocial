@@ -3,12 +3,16 @@ const express = require('express');
 const port = 8001;
 const router = require('./router/home');
 const expressLayout = require('express-ejs-layouts');
+const cookieParser = require('cookie-parser');
+const db = require('./config/mongoose');
 
 // app creation to start the server...
 const app = express();
 app.use('/',router);
 app.use(expressLayout);
 app.use(express.static('./assets'));
+app.use(express.urlencoded());
+app.use(cookieParser());
 
 
 
