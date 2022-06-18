@@ -6,20 +6,34 @@ const expressLayout = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
 const db = require('./config/mongoose');
 
+const bodyParser = require('body-parser');
+
+
+
+
 // app creation to start the server...
 const app = express();
-app.use('/',router);
-app.use(expressLayout);
 app.use(express.static('./assets'));
-app.use(express.urlencoded());
+
+app.use(express.urlencoded({extended: false}));
+
 app.use(cookieParser());
+app.use('/',router); 
+
 
 
 
 // view engine setup...
-app.set('view engine','ejs');
 app.set('views','view');
+app.set('view engine','ejs');
 
+
+
+
+app.set('layout extractScripts', true)
+app.set('layout extractStyles', true)
+
+app.use(expressLayout);
 
 
 // listener to check the server status...
