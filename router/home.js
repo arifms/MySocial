@@ -1,8 +1,8 @@
 // Dependencies...
-const homeController = require('../controller/home_controller');
 const express = require('express');
-const app = express();
 const router = express.Router();
+const homeController = require('../controller/home_controller');
+
 
 
 // paths...
