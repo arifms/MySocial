@@ -1,1 +1,13 @@
-Home page
+Page is/<%= title  %> 
+<section id="feed-post">
+    <h4>posts</h4>
+    <form action="/posts/create" method="post">
+        <textarea name="post" id="new-post-form" cols="30" rows="3"></textarea>
+        <input type="submit" value="Post" >
+    </form>
+    <div id="posts-list">
+        <% for (var i=0;i<post.length;i++){ %>
+            <p><%= post[i].content  %> </p>
+        <% } %>  
+    </div>
+</section>

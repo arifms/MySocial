@@ -3,7 +3,8 @@ module.exports.profile = function(req,res){
     if(req.isAuthenticated()){
         return res.render('user-profile',{
             title: 'User Profile',
-            user: User
+            user:req.user.name
+            
         });
     }
     return res.redirect('/users/sign-in/')
@@ -84,3 +85,5 @@ module.exports.destroySession = function(req,res,next){
 
     // return res.redirect('/');
 }
+
+

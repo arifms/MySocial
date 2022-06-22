@@ -7,7 +7,8 @@ const homeController = require('../controller/home_controller');
 
 // paths...
 router.get('/',homeController.home);
-router.use('/users',require('./users'))
+router.use('/users',require('./users'));
+router.use('/posts',require('./posts'));
 
 
 
