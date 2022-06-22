@@ -1,0 +1,14 @@
+header {
+  display: flex;
+  background-color: green;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center; }
+  header ul {
+    display: flex; }
+    header ul li {
+      list-style: none;
+      padding: 0px 10px; }
+      header ul li a {
+        text-decoration: none;
+        color: white; }
