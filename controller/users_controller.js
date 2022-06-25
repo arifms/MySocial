@@ -3,7 +3,7 @@ module.exports.profile = function(req,res){
     if(req.isAuthenticated()){
         return res.render('user-profile',{
             title: 'User Profile',
-            user:req.user.name
+            user: User
             
         });
     }
