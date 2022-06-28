@@ -1,0 +1,55 @@
+<section id="feed-post">
+    <button id="add-post">Add Post</button>
+    <div id="click-display">
+        <h4>posts</h4>
+        <form action="/posts/create" method="post">
+            <textarea name="post" id="new-post-form" cols="30" rows="3"></textarea>
+            <input type="submit" value="Post" >
+        </form>
+    </div>
+    <div id="posts-list">
+        <ul>
+        <% for (var i=0;i<post.length;i++){ %>
+            <li>
+            <a href="/posts/destroy/<%= post[i]._id  %> ">X</a>
+                
+            <p><%= post[i].content  %> 
+            <br>
+            <small>
+                <%= post[i].user.name %> 
+            </small>
+            </p>
+            
+            <div class="post-comment">
+                
+                    <form action="/comments/create" method="post">
+                        <input type="text" name="content" placeholder="type Here to add comment...">
+                        <input type="hidden" name="post" value="<%= post[i]._id  %>" >
+                        <input type="submit" value="Add Comment">
+                    </form>
+
+            </div>
+
+            <div class="display-comments">
+                <h1>Comments</h1>
+                <ul id="post-comment-<%= post[i]._id %>">
+                    <li>
+                        <% for (comment of post[i].comments) { %> 
+                            <p>
+                               
+                                <%= comment.content %> 
+                                <%= comment.user.name %> 
+                            </p>
+                            <br>
+                            <small>
+                            </small>
+                        <% } %> 
+                    </li>
+                </ul>
+               
+            </div>
+            </li>
+        <% } %> 
+        </ul>  
+    </div>
+</section>

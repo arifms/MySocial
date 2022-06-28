@@ -11,8 +11,7 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 
 const MongoStore = require('connect-mongo');
-
-// sass
+const flash = require('connect-flash');
 const sassMiddleware = require('node-sass-middleware');
 
 
@@ -24,7 +23,7 @@ const app = express();
 app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
-    debug: false,
+    debug: true,
     outputStyle: 'extended',
     prefix: '/css'
 }))
@@ -34,11 +33,6 @@ app.use(express.static('./assets'));
 app.use(express.urlencoded({extended: false}));
 app.set('layout extractScripts', true)
 app.set('layout extractStyles', true)
-
-
-
-
-
 
 
 // view engine setup...
@@ -70,6 +64,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+
+
+
+// place routers at end to make thing work properly...
 app.use('/',router); 
 
 
